@@ -1,0 +1,8 @@
+type Plant {
+    id: Int!
+    genus_id: Int!
+    scientific_name: String!
+    year: Int
+    genus_family_common_name: String!
+    species_observation: String!
+}

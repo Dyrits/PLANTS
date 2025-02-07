@@ -1,0 +1,25 @@
+services:
+  api:
+    env_file:
+      - ./.env
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.development
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+        - action: sync+restart
+          path: ./
+          target: /app
+          ignore:
+            - ./src
+        # Container is set to restart because .graphql files doesn't trigger a hot reload (with TSX).
+        - action: sync+restart
+          path: ./src/schemas
+          target: /app/src/schemas
+        - action: rebuild
+          path: ./package.json
+    ports:
+      - "${PORT}:${PORT}"
