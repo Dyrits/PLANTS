@@ -1,0 +1,21 @@
+services:
+  api:
+    env_file:
+      - ./.env
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.development
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+        - action: sync+restart
+          path: ./
+          target: /app
+          ignore:
+            - ./src
+        - action: rebuild
+          path: ./package.json
+    ports:
+      - "${PORT}:${PORT}"
