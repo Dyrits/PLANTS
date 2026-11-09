@@ -16,20 +16,21 @@ An Express API that aggregates plant data from the Trefle API, with Vitest tests
 
 ### Prerequisites
 
-- Node.js, or Docker and Docker Compose
+- Node.js 26 LTS (`nvm use`), or Docker and Docker Compose
 - A Trefle API token in `.env` (see `.env.example`: `API_TOKEN`, `PORT`)
 
 ### Installation
 
 ```sh
-npm install
+npm ci
 ```
 
 ### Development
 
 ```sh
 npm run watch        # node --watch src/index.js
-npm test             # Vitest
+npm test             # Vitest watch mode
+npm run test:run     # Run unit and local HTTP integration tests once
 ```
 
 Or with Docker:
@@ -38,6 +39,8 @@ Or with Docker:
 make docker-watch    # build and run with compose watch
 make docker-test     # run the Vitest suite inside the container
 ```
+
+Tests use a local fixture server rather than a real Trefle account. They check the Axios query format, detail requests and error handling, but do not prove live Trefle availability or token validity.
 
 ## License
 

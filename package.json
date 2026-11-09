@@ -6,7 +6,8 @@
   "scripts": {
     "watch": "node --watch src/index.js",
     "test": "vitest",
-    "format": "prettier --write \"./**/*.{js,jsx}\""
+    "format": "prettier --write \"./**/*.{js,jsx}\"",
+    "test:run": "vitest run"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,10 @@
   "devDependencies": {
     "prettier": "^3.4.2",
     "supertest": "^7.0.0",
-    "vitest": "^3.0.5"
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0"
+  },
+  "engines": {
+    "node": "^26.0.0"
   }
 }
